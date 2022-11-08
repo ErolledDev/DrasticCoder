@@ -19,7 +19,7 @@ app.post('/', (req, res) => {
 
     const SHORT_ID = new URL({
         longUrl: link,
-        shortUrl: `http://localhost:3000/${ID}`,
+        shortUrl: `http://lits.rocks/${ID}`,
         shortIdentity: ID,
         date: Date.now()
     })

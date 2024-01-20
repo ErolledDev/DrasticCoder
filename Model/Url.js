@@ -13,10 +13,10 @@ const Url = new Schema({
         type : String ,
         required :true
     },
-    date : {
-        type : String ,
-        default : Date.now
+    password : {
+        type : String
     }
-})
+}, {timestamps : true}
+)
 
 module.exports= model('Url',Url);

@@ -7,7 +7,11 @@ const ejs = require('ejs');
 
 const dotenv = require('dotenv');
 
-if (process.env.NODE_ENV !== 'production') dotenv.config({ path: './config.env' });
+// Load environment variables from .env file
+dotenv.config();
+
+// Set strictQuery to handle deprecation warning
+mongoose.set('strictQuery', false);
 
 const app = express();
 app.use(express.json())
@@ -19,6 +23,7 @@ const URL = require('./Model/Url');
 // Connecting to DB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to DB'))
+    .catch(err => console.error('Could not connect to DB:', err.message));
 
 // Routes
 app.get("/",(req,res)=>{
